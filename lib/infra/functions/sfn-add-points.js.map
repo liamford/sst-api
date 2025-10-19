@@ -1,0 +1,1 @@
+{"version":3,"file":"sfn-add-points.js","sourceRoot":"","sources":["../../../src/infra/functions/sfn-add-points.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,wCAAwC,CAAC;AAM1E,MAAM,gBAAgB,GAAG,IAAI,gBAAgB,EAAE,CAAC;AAEhD,MAAM,CAAC,MAAM,OAAO,GAA2B,KAAK,EAAE,KAAK,EAAE,EAAE;IAC7D,OAAO,MAAM,gBAAgB,CAAC,OAAO,CAAC,KAAK,CAAC,CAAC;AAC/C,CAAC,CAAC"}

@@ -1,0 +1,72 @@
+# Node
+node_modules/
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+# lockfiles: typically committed; ignore only stray backups
+package-lock.json.*
+pnpm-lock.yaml.*
+yarn.lock.*
+
+# TypeScript
+*.tsbuildinfo
+.ts-node/
+
+# Build artifacts
+dist/
+build/
+coverage/
+.coverage
+.nyc_output/
+.tmp/
+.tmp-*/
+.cache/
+
+# SST / Serverless / CDK
+.sst/
+.serverless/
+.aws-sam/
+cdk.out/
+.open-next/
+.dynamodb/
+sst-env.d.ts
+
+# Web frameworks
+.next/
+.nuxt/
+.svelte-kit/
+.vite/
+.vercel/
+
+# Env files (commit only .env.example)
+.env
+.env.*
+!.env.example
+.envrc
+
+# Tooling caches
+.eslintcache
+.turbo/
+
+# IDE/OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.fleet/
+.history/
+
+# Python (if any tooling/scripts)
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.mypy_cache/
+
+# Java/Rust/Go extras if present
+target/
+.gradle/
+bin/

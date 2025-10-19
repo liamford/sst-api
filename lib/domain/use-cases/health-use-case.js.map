@@ -1,0 +1,1 @@
+{"version":3,"file":"health-use-case.js","sourceRoot":"","sources":["../../../src/domain/use-cases/health-use-case.ts"],"names":[],"mappings":"AAEA,MAAM,OAAO,aAAa;IACxB,KAAK,CAAC,OAAO;QACX,OAAO,EAAE,MAAM,EAAE,GAAG,EAAE,OAAO,EAAE,IAAI,EAAE,CAAC;IACxC,CAAC;CACF"}
