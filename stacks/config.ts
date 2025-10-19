@@ -15,11 +15,11 @@ export const appConfig = {
     apiBucket: {
       allowOrigins: ['http://localhost:5173'],
       allowHeaders: ['*'],
-      allowMethods: ['PUT'],
+      allowMethods: ['PUT'] as const,
     },
     webBucket: {
       allowOrigins: ['*'],
-      allowMethods: ['GET', 'HEAD'],
+      allowMethods: ['GET', 'HEAD'] as const,
       allowHeaders: ['*'],
     },
   },
