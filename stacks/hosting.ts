@@ -7,7 +7,7 @@ import { appConfig } from './config';
 const webBucket = new sst.aws.Bucket(`${appConfig.name}-web-artifacts`, {
   // Keep bucket private; CloudFront will read via OAC
   access: 'cloudfront',
-  cors: appConfig.cors.webBucket,
+  cors: appConfig.cors.webBucket as any,
 });
 
 // CloudFront Origin Access Control (OAC) to securely sign requests to S3

@@ -41,7 +41,7 @@ apigw.route(
   lambda({
     handler: 'src/infra/functions/user-info.handler',
     environment,
-    timeout: appConfig.runtime.defaultTimeout,
+    timeout: appConfig.runtime.defaultTimeout as any,
     permissions: [
       {
         actions: ['s3:PutObject'],
@@ -69,7 +69,7 @@ apigw.route(
   lambda({
     handler: 'src/infra/functions/get-users.handler',
     environment,
-    timeout: appConfig.runtime.defaultTimeout,
+    timeout: appConfig.runtime.defaultTimeout as any,
     permissions: [
       {
         actions: ['dynamodb:Scan'],
@@ -96,7 +96,7 @@ apigw.route(
       USERS_TABLE_PK: 'uetr',
       REWARDS_STATE_MACHINE_ARN: rewardsStateMachine.arn,
     },
-    timeout: appConfig.runtime.defaultTimeout,
+    timeout: appConfig.runtime.defaultTimeout as any,
     permissions: [
       {
         actions: ['dynamodb:GetItem'],

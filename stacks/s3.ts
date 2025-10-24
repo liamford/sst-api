@@ -5,7 +5,7 @@ import { appConfig } from './config';
 const name = `${appConfig.naming.prefix($app.stage)}-${appConfig.naming.apiBucketBase}`;
 
 const bucket = new sst.aws.Bucket(name, {
-  cors: appConfig.cors.apiBucket,
+  cors: appConfig.cors.apiBucket as any,
   transform: {
     bucket: {
       bucket: name,
