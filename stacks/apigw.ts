@@ -2,8 +2,8 @@
 
 import { poolClient, userPool } from './cognito';
 import { appConfig } from './config';
-import { table } from './dynamo';
-import { bucket } from './s3';
+import { table, productTable } from './dynamo';
+import { bucket, picturesBucket } from './s3';
 import { rewardsStateMachine } from './step-functions';
 import { lambda } from './utils/lambda';
 
@@ -110,6 +110,68 @@ apigw.route(
       },
     ],
   }),
+);
+
+apigw.route(
+  'POST /products',
+  lambda({
+    handler: 'src/infra/functions/create-product.handler',
+    environment: {
+      PICTURES_BUCKET_NAME: picturesBucket.name,
+      PRODUCTS_TABLE_NAME: productTable.name,
+    },
+    timeout: appConfig.runtime.defaultTimeout as any,
+    permissions: [
+      {
+        actions: ['s3:PutObject'],
+        effect: 'allow',
+        resources: [picturesBucket.arn.apply((arn) => `${arn}/*`)],
+      },
+      {
+        actions: ['dynamodb:PutItem'],
+        effect: 'allow',
+        resources: [productTable.arn],
+      },
+    ],
+  }),
+  {
+    auth: {
+      jwt: {
+        authorizer: authorizer.id,
+      },
+    },
+  },
+);
+
+apigw.route(
+  'GET /products',
+  lambda({
+    handler: 'src/infra/functions/list-products.handler',
+    environment: {
+      PICTURES_BUCKET_NAME: picturesBucket.name,
+      PRODUCTS_TABLE_NAME: productTable.name,
+    },
+    timeout: appConfig.runtime.defaultTimeout as any,
+    permissions: [
+      {
+        actions: ['dynamodb:Scan'],
+        effect: 'allow',
+        resources: [productTable.arn],
+      },
+      {
+        actions: ['s3:GetObject'],
+        effect: 'allow',
+        resources: [picturesBucket.arn.apply((arn) => `${arn}/*`)],
+      },
+    ],
+  }),
+  {
+    auth: {
+      jwt: {
+        authorizer: authorizer.id,
+      },
+    },
+  },
 );
 
 export { apigw };

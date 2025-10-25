@@ -6,6 +6,7 @@ export const appConfig = {
   naming: {
     prefix: (stage: string) => `backend-${stage}`,
     dynamoTableBase: 'users',
+    dynamoProductTableBase: 'products',
     apiBucketBase: 'api-uploads-bucket',
     webBucketBase: 'web-artifacts',
     cfDistComment: 'web static hosting',
