@@ -110,6 +110,7 @@ export class CreateProductUseCase implements UseCase {
 
       const productItem = {
         uetr: { S: uetr },
+        pk: { S: 'PRODUCT' },
         productName: { S: String(body.productName) },
         newPrice: { N: String(isNaN(newPriceNum) ? 0 : newPriceNum) },
         ...(oldPriceNum != null ? { oldPrice: { N: String(isNaN(oldPriceNum) ? 0 : oldPriceNum) } } : {}),

@@ -23,8 +23,13 @@ export const table = new sst.aws.Dynamo(tableName, {
 export const productTable = new sst.aws.Dynamo(productTableName, {
   fields: {
     uetr: 'string',
+    pk: 'string',
+    newPrice: 'number',
   },
   primaryIndex: { hashKey: 'uetr' },
+  globalIndexes: {
+    'gsi1-price': { hashKey: 'pk', rangeKey: 'newPrice' },
+  },
   transform: {
     table: {
       name: productTableName,

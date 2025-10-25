@@ -154,9 +154,12 @@ apigw.route(
     timeout: appConfig.runtime.defaultTimeout as any,
     permissions: [
       {
-        actions: ['dynamodb:Scan'],
+        actions: ['dynamodb:Scan', 'dynamodb:Query'],
         effect: 'allow',
-        resources: [productTable.arn],
+        resources: [
+          productTable.arn,
+          productTable.arn.apply((arn) => `${arn}/index/*`),
+        ],
       },
       {
         actions: ['s3:GetObject'],
